@@ -15,8 +15,11 @@ class ReportController extends Controller
     public function weeklyReport(Student $student)
     {
         // Security: Ensure student belongs to authenticated parent
-        if ($student->parent_id !== Auth::guard('parent')->id()) {
-            abort(403, 'Unauthorized access to student data');
+        $studentParentId = (int) $student->parent_id;
+        $loggedInParentId = (int) Auth::guard('parent')->id();
+
+        if ($studentParentId !== $loggedInParentId) {
+            abort(403, "Unauthorized access to student data (Student Parent ID: {$studentParentId}, Your ID: {$loggedInParentId})");
         }
 
         // Get current week date range
@@ -77,7 +80,10 @@ class ReportController extends Controller
     public function gameReport(GameSession $session)
     {
         // Security: Ensure session belongs to authenticated parent's student
-        if ($session->student->parent_id !== Auth::guard('parent')->id()) {
+        $studentParentId = (int) $session->student->parent_id;
+        $loggedInParentId = (int) Auth::guard('parent')->id();
+        
+        if ($studentParentId !== $loggedInParentId) {
             abort(403, 'Unauthorized access to game session');
         }
 

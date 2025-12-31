@@ -13,7 +13,7 @@ class GameQuestionController extends Controller
 {
     public function create(Game $game)
     {
-        if ($game->teacher_id !== Auth::guard('teacher')->id()) {
+        if ((int)$game->teacher_id !== (int)Auth::guard('teacher')->id()) {
             abort(403);
         }
 
@@ -22,7 +22,7 @@ class GameQuestionController extends Controller
 
     public function store(Request $request, Game $game)
     {
-        if ($game->teacher_id !== Auth::guard('teacher')->id()) {
+        if ((int)$game->teacher_id !== (int)Auth::guard('teacher')->id()) {
             abort(403);
         }
 
@@ -59,7 +59,7 @@ class GameQuestionController extends Controller
 
     public function edit(Game $game, GameQuestion $question)
     {
-        if ($game->teacher_id !== Auth::guard('teacher')->id() || $question->game_id !== $game->id) {
+        if ((int)$game->teacher_id !== (int)Auth::guard('teacher')->id() || $question->game_id !== $game->id) {
             abort(403);
         }
 
@@ -68,7 +68,7 @@ class GameQuestionController extends Controller
 
     public function update(Request $request, Game $game, GameQuestion $question)
     {
-        if ($game->teacher_id !== Auth::guard('teacher')->id() || $question->game_id !== $game->id) {
+        if ((int)$game->teacher_id !== (int)Auth::guard('teacher')->id() || $question->game_id !== $game->id) {
             abort(403);
         }
 
@@ -113,7 +113,7 @@ class GameQuestionController extends Controller
 
     public function destroy(Game $game, GameQuestion $question)
     {
-        if ($game->teacher_id !== Auth::guard('teacher')->id() || $question->game_id !== $game->id) {
+        if ((int)$game->teacher_id !== (int)Auth::guard('teacher')->id() || $question->game_id !== $game->id) {
             abort(403);
         }
 

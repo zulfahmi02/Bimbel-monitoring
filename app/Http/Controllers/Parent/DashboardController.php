@@ -107,9 +107,36 @@ class DashboardController extends Controller
 
     public function selectChild(Student $student)
     {
+        $parent = Auth::guard('parent')->user();
+        
+        // Convert to integers to ensure proper comparison
+        $studentParentId = (int) $student->parent_id;
+        $loggedInParentId = (int) $parent->id;
+        
+        // Debug logging
+        \Log::info('SelectChild Debug', [
+            'student_id' => $student->id,
+            'student_name' => $student->name,
+            'student_parent_id' => $studentParentId,
+            'student_parent_id_type' => gettype($student->parent_id),
+            'logged_in_parent_id' => $loggedInParentId,
+            'logged_in_parent_id_type' => gettype($parent->id),
+            'logged_in_parent_name' => $parent->name,
+            'match' => $studentParentId === $loggedInParentId
+        ]);
+        
         // Ensure student belongs to authorized parent
-        if ($student->parent_id !== Auth::guard('parent')->id()) {
-            abort(403);
+        if ($studentParentId !== $loggedInParentId) {
+            \Log::warning('Unauthorized child selection attempt', [
+                'parent_id' => $loggedInParentId,
+                'parent_name' => $parent->name,
+                'student_id' => $student->id,
+                'student_name' => $student->name,
+                'student_parent_id' => $studentParentId
+            ]);
+            
+            return redirect()->route('parent.dashboard')
+                ->with('error', "Anda tidak memiliki akses ke profil siswa ini. (Student parent_id: {$studentParentId}, Your ID: {$loggedInParentId})");
         }
 
         session(['active_student_id' => $student->id]);

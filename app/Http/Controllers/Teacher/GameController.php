@@ -61,8 +61,11 @@ class GameController extends Controller
     public function edit(Game $game)
     {
         // Ensure teacher owns the game
-        if ($game->teacher_id !== Auth::guard('teacher')->id()) {
-            abort(403);
+        $gameTeacherId = (int) $game->teacher_id;
+        $loggedInTeacherId = (int) Auth::guard('teacher')->id();
+
+        if ($gameTeacherId !== $loggedInTeacherId) {
+            abort(403, "Unauthorized access to game (Game Teacher ID: {$gameTeacherId}, Your ID: {$loggedInTeacherId})");
         }
 
         $templates = GameTemplate::all();
@@ -76,8 +79,11 @@ class GameController extends Controller
 
     public function update(Request $request, Game $game)
     {
-        if ($game->teacher_id !== Auth::guard('teacher')->id()) {
-            abort(403);
+        $gameTeacherId = (int) $game->teacher_id;
+        $loggedInTeacherId = (int) Auth::guard('teacher')->id();
+
+        if ($gameTeacherId !== $loggedInTeacherId) {
+            abort(403, "Unauthorized access to game");
         }
 
         $request->validate([
@@ -103,8 +109,11 @@ class GameController extends Controller
 
     public function destroy(Game $game)
     {
-        if ($game->teacher_id !== Auth::guard('teacher')->id()) {
-            abort(403);
+        $gameTeacherId = (int) $game->teacher_id;
+        $loggedInTeacherId = (int) Auth::guard('teacher')->id();
+
+        if ($gameTeacherId !== $loggedInTeacherId) {
+            abort(403, "Unauthorized access to game");
         }
 
         $game->delete();

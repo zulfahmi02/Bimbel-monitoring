@@ -289,15 +289,14 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach($children as $child)
                 <div class="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition cursor-pointer group flex flex-col h-full relative {{ $activeStudent && $activeStudent->id === $child->id ? 'ring-2 ring-secondary-500 ring-offset-2' : '' }}">
-                     {{-- Selection Form Overlay --}}
-                     <form action="{{ route('parent.select-child', $child) }}" method="POST" class="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition duration-300 bg-secondary-900/10 flex items-center justify-center backdrop-blur-[1px]">
-                        @csrf
-                        @if(!$activeStudent || $activeStudent->id !== $child->id)
-                            <button type="submit" class="bg-white text-secondary-700 px-6 py-2 rounded-full font-bold shadow-lg transform scale-90 group-hover:scale-100 transition">
-                                Pilih Profil Ini
-                            </button>
-                        @endif
-                    </form>
+                     {{-- Selection Link Overlay --}}
+                     @if(!$activeStudent || $activeStudent->id !== $child->id)
+                         <a href="{{ route('parent.select-child', $child) }}" class="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition duration-300 bg-secondary-900/10 flex items-center justify-center backdrop-blur-[1px]">
+                             <span class="bg-white text-secondary-700 px-6 py-2 rounded-full font-bold shadow-lg transform scale-90 group-hover:scale-100 transition">
+                                 Pilih Profil Ini
+                             </span>
+                         </a>
+                     @endif
 
                     <div class="h-24 bg-gradient-to-br from-secondary-100 to-secondary-200 relative">
                         <div class="absolute -bottom-8 left-6">

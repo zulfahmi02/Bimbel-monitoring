@@ -16,12 +16,32 @@ class EnsureUserIsApproved
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $user = Auth::user();
+        // Deteksi guard yang sedang aktif
+        $guards = ['parent', 'teacher', 'web'];
+        $user = null;
+        $activeGuard = null;
 
+        foreach ($guards as $guard) {
+            if (Auth::guard($guard)->check()) {
+                $user = Auth::guard($guard)->user();
+                $activeGuard = $guard;
+                break;
+            }
+        }
+
+        // Validasi status approval
         if ($user && $user->status !== 'approved') {
-            Auth::logout();
-
-            return redirect()->route('welcome')->with('error', 'Akun Anda belum disetujui oleh Admin. Silahkan hubungi Admin atau tunggu persetujuan.');
+            Auth::guard($activeGuard)->logout();
+            
+            // Redirect ke halaman login yang sesuai
+            $loginRoute = match($activeGuard) {
+                'teacher' => 'teacher.login',
+                'parent' => 'parent.login',
+                default => 'landing'
+            };
+            
+            return redirect()->route($loginRoute)
+                ->with('error', 'Akun Anda belum disetujui oleh Admin. Silahkan hubungi Admin atau tunggu persetujuan.');
         }
 
         return $next($request);

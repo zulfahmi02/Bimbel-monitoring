@@ -45,7 +45,7 @@ Route::prefix('parent')->name('parent.')->group(function () {
 
     Route::middleware(['auth:parent', \App\Http\Middleware\EnsureUserIsApproved::class])->group(function () {
         Route::get('dashboard', [ParentNamespace\DashboardController::class, 'index'])->name('dashboard');
-        Route::post('select-child/{student}', [ParentNamespace\DashboardController::class, 'selectChild'])->name('select-child');
+        Route::get('select-child/{student}', [ParentNamespace\DashboardController::class, 'selectChild'])->name('select-child');
         
         // New parent features
         Route::get('schedules', [ParentNamespace\DashboardController::class, 'viewSchedules'])->name('schedules');
