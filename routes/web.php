@@ -10,6 +10,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('landing');
 
+// Sitemap
+Route::get('/sitemap.xml', [App\Http\Controllers\SitemapController::class, 'index'])->name('sitemap');
+
+
 // Teacher Routes
 Route::prefix('teacher')->name('teacher.')->group(function () {
     Route::middleware('guest:teacher')->group(function () {

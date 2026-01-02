@@ -15,7 +15,11 @@ class GameController extends Controller
     public function index()
     {
         $teacher = Auth::guard('teacher')->user();
-        $games = Game::where('teacher_id', $teacher->id)->latest()->get();
+        $games = Game::where('teacher_id', $teacher->id)
+            ->with(['template', 'subject'])
+            ->withCount('questions')
+            ->latest()
+            ->get();
         return view('teacher.games.index', compact('games'));
     }
 
@@ -60,13 +64,7 @@ class GameController extends Controller
 
     public function edit(Game $game)
     {
-        // Ensure teacher owns the game
-        $gameTeacherId = (int) $game->teacher_id;
-        $loggedInTeacherId = (int) Auth::guard('teacher')->id();
-
-        if ($gameTeacherId !== $loggedInTeacherId) {
-            abort(403, "Unauthorized access to game (Game Teacher ID: {$gameTeacherId}, Your ID: {$loggedInTeacherId})");
-        }
+        $this->authorize('update', $game);
 
         $templates = GameTemplate::all();
         $subjects = Auth::guard('teacher')->user()->subjects;
@@ -79,12 +77,7 @@ class GameController extends Controller
 
     public function update(Request $request, Game $game)
     {
-        $gameTeacherId = (int) $game->teacher_id;
-        $loggedInTeacherId = (int) Auth::guard('teacher')->id();
-
-        if ($gameTeacherId !== $loggedInTeacherId) {
-            abort(403, "Unauthorized access to game");
-        }
+        $this->authorize('update', $game);
 
         $request->validate([
             'title' => 'required|string|max:255',
@@ -109,12 +102,7 @@ class GameController extends Controller
 
     public function destroy(Game $game)
     {
-        $gameTeacherId = (int) $game->teacher_id;
-        $loggedInTeacherId = (int) Auth::guard('teacher')->id();
-
-        if ($gameTeacherId !== $loggedInTeacherId) {
-            abort(403, "Unauthorized access to game");
-        }
+        $this->authorize('delete', $game);
 
         $game->delete();
 

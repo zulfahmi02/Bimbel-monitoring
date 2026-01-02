@@ -13,7 +13,8 @@ class DashboardController extends Controller
     {
         $teacher = Auth::guard('teacher')->user();
         $games = Game::where('teacher_id', $teacher->id)
-            ->with(['template', 'subject', 'questions'])
+            ->with(['template', 'subject'])
+            ->withCount('questions')
             ->latest()
             ->take(5)
             ->get();

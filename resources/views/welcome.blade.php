@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Selamat Datang')
+@section('title', 'Belajar Jadi Petualangan - Platform Monitoring & Game Edukasi')
+@section('description', 'Platform monitoring akademik yang menggabungkan manajemen sekolah dengan Game Edukasi Interaktif. Pantau perkembangan anak sambil bermain! Terpercaya oleh 500+ Sekolah.')
+@section('keywords', 'bimbel pados ilmu, game edukasi, monitoring akademik, platform pendidikan, game based learning, kurikulum merdeka, bimbel online, pendidikan anak')
+
+@section('og_title', 'Belajar Jadi Petualangan 🚀 - Bimbel Pados Ilmu')
+@section('og_description', 'Platform monitoring akademik yang menggabungkan manajemen sekolah dengan Game Edukasi Interaktif. Terpercaya oleh 500+ Sekolah!')
+@section('og_image', asset('storage/hero_education_3d_1767202083141.png'))
+
 
 @section('content')
 <div class="relative min-h-screen bg-[#F8FAFC] overflow-hidden selection:bg-primary-500 selection:text-white">
@@ -54,15 +61,30 @@
                     </a>
                 </div>
 
-                <div class="pt-8 flex items-center justify-center lg:justify-start gap-8 text-slate-400">
-                    <!-- Tech Logos / Badges Placeholder -->
-                    <div class="flex items-center gap-2 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition duration-500">
-                        <div class="h-8 w-8 bg-slate-200 rounded-lg"></div>
-                        <span class="text-sm font-semibold">Kurikulum Merdeka</span>
+                <div class="pt-10 flex flex-wrap items-center justify-center lg:justify-start gap-6">
+                    <!-- Feature Badges -->
+                    <div class="flex items-center gap-3 bg-white px-4 py-3 rounded-xl shadow-sm border border-slate-100 hover:border-primary-200 transition duration-300">
+                        <div class="h-10 w-10 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+                            </svg>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Kurikulum</span>
+                            <span class="text-sm font-bold text-slate-700">Merdeka Belajar</span>
+                        </div>
                     </div>
-                     <div class="flex items-center gap-2 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition duration-500">
-                        <div class="h-8 w-8 bg-slate-200 rounded-lg"></div>
-                        <span class="text-sm font-semibold">Game Based Learning</span>
+
+                     <div class="flex items-center gap-3 bg-white px-4 py-3 rounded-xl shadow-sm border border-slate-100 hover:border-secondary-200 transition duration-300">
+                        <div class="h-10 w-10 bg-orange-50 rounded-lg flex items-center justify-center text-orange-600">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
+                            </svg>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Metode</span>
+                            <span class="text-sm font-bold text-slate-700">Game Based Learning</span>
+                        </div>
                     </div>
                 </div>
             </div>

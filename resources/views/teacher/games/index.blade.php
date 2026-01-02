@@ -73,7 +73,7 @@
                         
                         <div class="flex items-center justify-between pt-4 border-t border-gray-50">
                             <div class="text-xs text-gray-400">
-                                {{ $game->questions->count() }} Soal
+                                {{ $game->questions_count }} Soal
                             </div>
                             <div class="flex gap-2">
                                 <a href="{{ route('teacher.games.edit', $game) }}" class="p-2 text-gray-400 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition">

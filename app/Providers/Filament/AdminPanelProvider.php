@@ -26,7 +26,7 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('admin')
-            ->path('admin')
+            ->path('sys-admin') // Diganti agar tidak mudah ditebak (Security thru obscurity)
             ->login()
             ->brandName('Bimbel Pados Ilmu - Admin')
             ->brandLogo(asset('storage/logo.png'))

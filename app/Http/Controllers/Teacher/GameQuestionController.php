@@ -13,18 +13,14 @@ class GameQuestionController extends Controller
 {
     public function create(Game $game)
     {
-        if ((int)$game->teacher_id !== (int)Auth::guard('teacher')->id()) {
-            abort(403);
-        }
+        $this->authorize('manageQuestions', $game);
 
         return view('teacher.questions.create', compact('game'));
     }
 
     public function store(Request $request, Game $game)
     {
-        if ((int)$game->teacher_id !== (int)Auth::guard('teacher')->id()) {
-            abort(403);
-        }
+        $this->authorize('manageQuestions', $game);
 
         $request->validate([
             'question_text' => 'required|string',
@@ -59,7 +55,9 @@ class GameQuestionController extends Controller
 
     public function edit(Game $game, GameQuestion $question)
     {
-        if ((int)$game->teacher_id !== (int)Auth::guard('teacher')->id() || $question->game_id !== $game->id) {
+        $this->authorize('manageQuestions', $game);
+        
+        if ($question->game_id !== $game->id) {
             abort(403);
         }
 
@@ -68,7 +66,9 @@ class GameQuestionController extends Controller
 
     public function update(Request $request, Game $game, GameQuestion $question)
     {
-        if ((int)$game->teacher_id !== (int)Auth::guard('teacher')->id() || $question->game_id !== $game->id) {
+        $this->authorize('manageQuestions', $game);
+        
+        if ($question->game_id !== $game->id) {
             abort(403);
         }
 
@@ -113,7 +113,9 @@ class GameQuestionController extends Controller
 
     public function destroy(Game $game, GameQuestion $question)
     {
-        if ((int)$game->teacher_id !== (int)Auth::guard('teacher')->id() || $question->game_id !== $game->id) {
+        $this->authorize('manageQuestions', $game);
+        
+        if ($question->game_id !== $game->id) {
             abort(403);
         }
 

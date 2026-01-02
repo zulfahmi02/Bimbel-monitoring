@@ -44,7 +44,8 @@ class GameSessionController extends Controller
                 $query->where('class_level', $student->class_level)
                       ->orWhere('class_level', 'ALL');
             })
-            ->with(['subject', 'teacher'])
+            ->with(['subject', 'teacher', 'template'])
+            ->withCount('questions')
             ->latest()
             ->get();
 
@@ -157,6 +158,8 @@ class GameSessionController extends Controller
             abort(403);
         }
 
+        $session->load(['game.questions', 'answers']);
+        
         return view('student.games.result', compact('session', 'student'));
     }
 }

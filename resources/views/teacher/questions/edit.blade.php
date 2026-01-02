@@ -93,11 +93,7 @@
 <script>
     function questionForm() {
         const correctAnswer = '{{ $question->correct_answer }}';
-        const initialOptions = [
-            @foreach($question->options as $option)
-                { value: '{{ $option }}' },
-            @endforeach
-        ];
+        const initialOptions = @json(array_map(fn($opt) => ['value' => $opt], $question->options));
         
         return {
             correctIndex: initialOptions.findIndex(opt => opt.value === correctAnswer) || 0,

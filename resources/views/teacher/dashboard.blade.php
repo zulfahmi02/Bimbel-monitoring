@@ -55,7 +55,7 @@
                             </div>
                             <p class="text-xs text-gray-500 mb-3 line-clamp-2">{{ $game->description ?: 'Tidak ada deskripsi' }}</p>
                             <div class="flex items-center justify-between pt-3 border-t border-gray-50">
-                                <span class="text-xs text-gray-400">{{ $game->questions->count() }} Soal</span>
+                                <span class="text-xs text-gray-400">{{ $game->questions_count }} Soal</span>
                                 <a href="{{ route('teacher.games.edit', $game) }}" class="text-xs font-medium text-primary-600 hover:text-primary-700">Edit →</a>
                             </div>
                         </div>

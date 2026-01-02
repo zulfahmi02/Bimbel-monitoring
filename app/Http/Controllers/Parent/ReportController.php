@@ -53,7 +53,7 @@ class ReportController extends Controller
         // Get schedules for the week
         $schedules = $student->schedules()
             ->with('subject')
-            ->orderByRaw("FIELD(day_of_week, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')")
+            ->orderByRaw("FIELD(day_of_week, 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu')")
             ->orderBy('start_time')
             ->get();
 

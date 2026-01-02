@@ -70,14 +70,25 @@ class DashboardController extends Controller
         // Get schedules for current week
         $schedules = Schedule::where('student_id', $student->id)
             ->with('subject')
-            ->orderByRaw("FIELD(day_of_week, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')")
+            ->orderByRaw("FIELD(day_of_week, 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu')")
             ->orderBy('start_time')
             ->get();
 
         // Get upcoming schedules (today and future)
-        $today = Carbon::now()->format('l'); // Monday, Tuesday, etc.
+        $dayMap = [
+            'Monday' => 'Senin',
+            'Tuesday' => 'Selasa',
+            'Wednesday' => 'Rabu',
+            'Thursday' => 'Kamis',
+            'Friday' => 'Jumat',
+            'Saturday' => 'Sabtu',
+            'Sunday' => 'Minggu'
+        ];
+        $todayEnglish = Carbon::now()->format('l'); // Monday, Tuesday, etc.
+        $today = $dayMap[$todayEnglish]; // Convert to Indonesian
+        
         $upcomingSchedules = $schedules->filter(function($schedule) use ($today) {
-            $daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+            $daysOfWeek = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
             $todayIndex = array_search($today, $daysOfWeek);
             $scheduleIndex = array_search($schedule->day_of_week, $daysOfWeek);
             return $scheduleIndex >= $todayIndex;
@@ -155,7 +166,7 @@ class DashboardController extends Controller
 
         $schedules = Schedule::where('student_id', $activeStudent->id)
             ->with('subject')
-            ->orderByRaw("FIELD(day_of_week, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')")
+            ->orderByRaw("FIELD(day_of_week, 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu')")
             ->orderBy('start_time')
             ->get();
 
