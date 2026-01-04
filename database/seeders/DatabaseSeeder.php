@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
     {
         // Create Admin User for Filament
         User::create([
-            'name' => 'Admin Bimbel Pados Ilmu',
+            'name' => 'Admin Taman Belajar Sedjati',
             'email' => 'admin@padosilmu.com',
             'password' => Hash::make('admin123'),
         ]);

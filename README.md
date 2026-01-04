@@ -1,7 +1,7 @@
-# Bimbel Pados Ilmu - Platform Monitoring & Game Edukasi
+# Taman Belajar Sedjati - Platform Monitoring & Game Edukasi
 
 <p align="center">
-  <img src="storage/app/public/logo.png" alt="Bimbel Pados Ilmu Logo" width="120">
+  <img src="storage/app/public/logo.png" alt="Taman Belajar Sedjati Logo" width="120">
 </p>
 
 <p align="center">
@@ -16,7 +16,7 @@
 
 ## 📋 Tentang Project
 
-**Bimbel Pados Ilmu** adalah platform monitoring akademik berbasis web yang menggabungkan manajemen sekolah dengan game edukasi interaktif. Platform ini memungkinkan:
+**Taman Belajar Sedjati** adalah platform monitoring akademik berbasis web yang menggabungkan manajemen sekolah dengan game edukasi interaktif. Platform ini memungkinkan:
 
 - **Guru** untuk membuat dan mengelola game edukasi
 - **Orang Tua** untuk memantau perkembangan belajar anak
@@ -277,7 +277,7 @@ This project is licensed under the MIT License.
 
 ## 👥 Team
 
-**Bimbel Pados Ilmu Development Team**
+**Taman Belajar Sedjati Development Team**
 
 ## 📞 Contact
 
@@ -288,5 +288,5 @@ This project is licensed under the MIT License.
 ---
 
 <p align="center">
-  Made with ❤️ by Bimbel Pados Ilmu Team
+  Made with ❤️ by Taman Belajar Sedjati Team
 </p>

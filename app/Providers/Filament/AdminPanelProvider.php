@@ -28,7 +28,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('sys-admin') // Diganti agar tidak mudah ditebak (Security thru obscurity)
             ->login()
-            ->brandName('Bimbel Pados Ilmu - Admin')
+            ->brandName('Taman Belajar Sedjati - Admin')
             ->brandLogo(asset('storage/logo.png'))
             ->brandLogoHeight('3rem')
             ->favicon(asset('storage/logo.png'))

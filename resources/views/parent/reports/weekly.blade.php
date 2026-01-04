@@ -1,30 +1,120 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Laporan Mingguan - {{ $student->name }}</title>
     <style>
-        body { font-family: sans-serif; color: #333; line-height: 1.6; }
-        .header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid #eee; padding-bottom: 20px; }
-        .logo { font-size: 24px; font-weight: bold; color: #4F46E5; }
-        .title { font-size: 20px; margin-top: 10px; font-weight: bold; }
-        .date { color: #666; font-size: 14px; }
-        .info-table { width: 100%; margin-bottom: 20px; border-collapse: collapse; }
-        .info-table td { padding: 5px; }
-        .stats-grid { display: table; width: 100%; margin-bottom: 30px; }
-        .stat-box { display: table-cell; text-align: center; padding: 15px; border: 1px solid #eee; background: #f9fafb; width: 25%; }
-        .stat-value { font-size: 24px; font-weight: bold; color: #111827; }
-        .stat-label { font-size: 12px; color: #6B7280; text-transform: uppercase; }
-        .section-title { font-size: 16px; font-weight: bold; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; color: #374151; }
-        .data-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 13px; }
-        .data-table th, .data-table td { border: 1px solid #e5e7eb; padding: 8px 12px; text-align: left; }
-        .data-table th { background-color: #f9fafb; font-weight: bold; color: #374151; }
-        .footer { margin-top: 50px; text-align: center; font-size: 12px; color: #9CA3AF; border-top: 1px solid #eee; padding-top: 20px; }
+        body {
+            font-family: sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4F46E5;
+        }
+
+        .title {
+            font-size: 20px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .date {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .info-table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+
+        .info-table td {
+            padding: 5px;
+        }
+
+        .stats-grid {
+            display: table;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .stat-box {
+            display: table-cell;
+            text-align: center;
+            padding: 15px;
+            border: 1px solid #eee;
+            background: #f9fafb;
+            width: 25%;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #111827;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #6B7280;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+            color: #374151;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+
+        .data-table th,
+        .data-table td {
+            border: 1px solid #e5e7eb;
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        .data-table th {
+            background-color: #f9fafb;
+            font-weight: bold;
+            color: #374151;
+        }
+
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 12px;
+            color: #9CA3AF;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
     </style>
 </head>
+
 <body>
     <div class="header">
-        <div class="logo">Bimbel Pados Ilmu</div>
+        <div class="logo">Taman Belajar Sedjati</div>
         <div class="title">Laporan Perkembangan Mingguan</div>
         <div class="date">Periode: {{ $startOfWeek->format('d M Y') }} - {{ $endOfWeek->format('d M Y') }}</div>
     </div>
@@ -121,7 +211,8 @@
     </table>
 
     <div class="footer">
-        &copy; {{ date('Y') }} Bimbel Pados Ilmu. Laporan ini dibuat secara otomatis oleh sistem.
+        &copy; {{ date('Y') }} Taman Belajar Sedjati. Laporan ini dibuat secara otomatis oleh sistem.
     </div>
 </body>
+
 </html>
